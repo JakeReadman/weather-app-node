@@ -18,11 +18,15 @@ const forecast = (longitude, latitude, callback) => {
     } else if (body.error) {
       callback(body.error);
     } else {
-      const { temperature: temp, precip: rain } = body.current;
-      const weatherDescription = body.current.weather_descriptions[0];
+      const {
+        temperature: temp,
+        precip: rain,
+        feelslike: feelsLike,
+      } = body.current;
+      const weatherDescription = body.current.weather_descriptions.join(", ");
       callback(
         undefined,
-        `It is currently ${temp} degrees. There is a ${rain}% chance of rain. It is ${weatherDescription}`
+        `It is currently ${temp} degrees, it feels like ${feelsLike} degrees. There is a ${rain}% chance of rain. Weather conditions: ${weatherDescription}`
       );
     }
   });
