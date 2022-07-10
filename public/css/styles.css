@@ -54,3 +54,8 @@ button:hover {
   color: #888;
   background-color: #eee;
 }
+
+img {
+  height: 200px;
+  width: auto;
+}
